@@ -1,10 +1,24 @@
 import React from "react";
 
-const Todo = ({ text, todos, setTodos }) => {
+const Todo = ({ todos, setTodos, todo }) => {
+  const completeHandler = () => {
+    setTodos(
+      todos.map((item) => {
+        if (item.id === todo.id) {
+          return {
+            ...item,
+            completed: !todo.completed,
+          };
+        } else {
+          return item;
+        }
+      })
+    );
+  };
   return (
     <div className="todo">
-      <li className="todo-item">{text}</li>
-      <button className="complete-btn">
+      <li className="todo-item">{todo.text}</li>
+      <button onClick={completeHandler} className="complete-btn">
         <i className="fas fa-check"></i>
       </button>
       <button className="trash-btn">
