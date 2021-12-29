@@ -1,6 +1,11 @@
 import React from "react";
 
 const Todo = ({ todos, setTodos, todo }) => {
+  const deleteHandler = () => {
+    setTodos(todos.filter((el) => el.id !== todo.id));
+    console.log(todo);
+  };
+
   const completeHandler = () => {
     setTodos(
       todos.map((item) => {
@@ -21,7 +26,7 @@ const Todo = ({ todos, setTodos, todo }) => {
       <button onClick={completeHandler} className="complete-btn">
         <i className="fas fa-check"></i>
       </button>
-      <button className="trash-btn">
+      <button onClick={deleteHandler} className="trash-btn">
         <i className="fas fa-trash"></i>
       </button>
     </div>
