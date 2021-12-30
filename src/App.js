@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useEffect } from "react/cjs/react.development";
 import "./App.css";
 import Form from "./components/Form";
 import TodoList from "./components/TodoList";
@@ -23,6 +24,10 @@ const App = () => {
     }
   };
 
+  useEffect(() => {
+    filterHandler();
+  }, [todos, status]);
+
   return (
     <div className="App">
       <header>
@@ -35,7 +40,11 @@ const App = () => {
         setTodos={setTodos}
         setStatus={setStatus}
       />
-      <TodoList todos={todos} setTodos={setTodos} />
+      <TodoList
+        todos={todos}
+        setTodos={setTodos}
+        filteredTodos={filteredTodos}
+      />
     </div>
   );
 };
