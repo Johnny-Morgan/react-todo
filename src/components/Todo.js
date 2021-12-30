@@ -3,7 +3,6 @@ import React from "react";
 const Todo = ({ todos, setTodos, todo }) => {
   const deleteHandler = () => {
     setTodos(todos.filter((el) => el.id !== todo.id));
-    console.log(todo);
   };
 
   const completeHandler = () => {
